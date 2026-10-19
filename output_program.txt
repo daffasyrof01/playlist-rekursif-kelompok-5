@@ -1,35 +1,35 @@
 === ANALISIS REKURSIF PLAYLIST ===
 Jumlah lagu: 10
-Total durasi: 42.22 menit
-Lagu terpanjang: IN THE NAME OF LOVE - world's end girlfriend : 7.29 menit
+Total durasi: 44:22 (44.37 menit)
+Lagu terpanjang: IN THE NAME OF LOVE - world's end girlfriend : 7:29
 
 Daftar Lagu:
-1. Perfect - Ed Sheeran (4.23)
-2. DATURA [paroxysm] - Crywolf (3.35)
-3. IN THE NAME OF LOVE - world's end girlfriend (7.29)
-4. Burning Down The Nicotine Armoire, Pt. 2 - Dance Gavin Dance (3.31)
-5. Teh Hijau - Tulus (3.33)
-6. Lathi - Weird Genius (3.3)
-7. Happier Than Ever - Billie Eilish (4.58)
-8. Yellow - Coldplay (4.26)
-9. Fix You - Coldplay (4.55)
-10. Viva La Vida - Coldplay (4.02)
+1. Perfect - Ed Sheeran (4:23)
+2. DATURA [paroxysm] - Crywolf (3:35)
+3. IN THE NAME OF LOVE - world's end girlfriend (7:29)
+4. Burning Down The Nicotine Armoire, Pt. 2 - Dance Gavin Dance (3:31)
+5. Teh Hijau - Tulus (3:33)
+6. Lathi - Weird Genius (3:30)
+7. Happier Than Ever - Billie Eilish (4:58)
+8. Yellow - Coldplay (4:26)
+9. Fix You - Coldplay (4:55)
+10. Viva La Vida - Coldplay (4:02)
 
 Playlist secara terbalik:
-10. Viva La Vida - Coldplay (4.02)
-9. Fix You - Coldplay (4.55)
-8. Yellow - Coldplay (4.26)
-7. Happier Than Ever - Billie Eilish (4.58)
-6. Lathi - Weird Genius (3.3)
-5. Teh Hijau - Tulus (3.33)
-4. Burning Down The Nicotine Armoire, Pt. 2 - Dance Gavin Dance (3.31)
-3. IN THE NAME OF LOVE - world's end girlfriend (7.29)
-2. DATURA [paroxysm] - Crywolf (3.35)
-1. Perfect - Ed Sheeran (4.23)
+10. Viva La Vida - Coldplay (4:02)
+9. Fix You - Coldplay (4:55)
+8. Yellow - Coldplay (4:26)
+7. Happier Than Ever - Billie Eilish (4:58)
+6. Lathi - Weird Genius (3:30)
+5. Teh Hijau - Tulus (3:33)
+4. Burning Down The Nicotine Armoire, Pt. 2 - Dance Gavin Dance (3:31)
+3. IN THE NAME OF LOVE - world's end girlfriend (7:29)
+2. DATURA [paroxysm] - Crywolf (3:35)
+1. Perfect - Ed Sheeran (4:23)
 
 === PENGUKURAN WAKTU EKSEKUSI ===
 Rata-rata waktu per pemanggilan (milidetik)
 Jumlah Lagu  totalDurasi        tampilkanMundur    cariDurasiTerpanjang
-3            0.000127           0.010360           0.000302          
-5            0.000063           0.009449           0.000187          
-10           0.000064           0.010626           0.000123          
+3            0.000100           0.033895           0.000177          
+5            0.000122           0.041886           0.000145          
+10           0.000078           0.047253           0.000118          

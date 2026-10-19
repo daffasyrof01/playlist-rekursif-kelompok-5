@@ -17,11 +17,19 @@ class Lagu {
     private String artis;
     private double durasi;
 
-    // Constructor untuk mengisi data lagu - adinda
+    // Input M.SS dari tugas sebelumnya dikonversi sekali menjadi menit riil - khenaro.
     public Lagu(String judul, String artis, double durasi) {
         this.judul = judul;
         this.artis = artis;
-        this.durasi = durasi;
+        if (!Double.isFinite(durasi) || durasi < 0) {
+            throw new IllegalArgumentException("Durasi harus berupa M.SS yang tidak negatif");
+        }
+        int menit = (int) durasi;
+        int detik = (int) Math.round((durasi - menit) * 100);
+        if (detik >= 60) {
+            throw new IllegalArgumentException("Bagian detik harus antara 00 dan 59");
+        }
+        this.durasi = menit + detik / 60.0;
     }
 
     // Mengambil judul lagu - adinda
@@ -34,7 +42,7 @@ class Lagu {
         return artis;
     }
 
-    // Mengambil durasi lagu - adinda
+    // Durasi dikembalikan dalam menit riil, bukan angka berformat M.SS - khenaro.
     public double getDurasi() {
         return durasi;
     }
@@ -42,6 +50,12 @@ class Lagu {
 
 // Class utama - adinda
 public class PlaylistRekursif {
+
+    // Pembulatan menghindari kehilangan satu detik akibat floating point - khenaro.
+    static String formatDurasi(double menit) {
+        long detik = Math.round(menit * 60);
+        return String.format(java.util.Locale.US, "%d:%02d", detik / 60, detik % 60);
+    }
 
     // Array objek Lagu dengan kapasitas 10 lagu - adinda
     static Lagu[] playlist = new Lagu[10];
@@ -130,7 +144,7 @@ public class PlaylistRekursif {
             (index + 1) + ". "
             + list[index].getJudul()
             + " - " + list[index].getArtis()
-            + " (" + list[index].getDurasi() + ")"
+            + " (" + formatDurasi(list[index].getDurasi()) + ")"
         );
         tampilkanMundur(list, n - 1);
     }
@@ -271,7 +285,7 @@ public class PlaylistRekursif {
         double total = totalDurasi(playlist, jumlahLagu);
         System.out.println(String.format(
             java.util.Locale.US,
-            "Total durasi: %.2f menit", total
+            "Total durasi: %s (%.2f menit)", formatDurasi(total), total
         ));
 
         // find and display the song with the longest duration - taufan
@@ -287,10 +301,10 @@ public class PlaylistRekursif {
             }
             System.out.println(String.format(
                 java.util.Locale.US,
-                "Lagu terpanjang: %s - %s : %.2f menit",
+                "Lagu terpanjang: %s - %s : %s",
                 terpanjang.getJudul(),
                 terpanjang.getArtis(),
-                terpanjang.getDurasi()
+                formatDurasi(terpanjang.getDurasi())
             ));
         } else {
             System.out.println("\nPlaylist kosong!");
@@ -305,7 +319,7 @@ public class PlaylistRekursif {
                     (i + 1) + ". "
                     + playlist[i].getJudul()
                     + " - " + playlist[i].getArtis()
-                    + " (" + playlist[i].getDurasi() + ")"
+                    + " (" + formatDurasi(playlist[i].getDurasi()) + ")"
                 );
             }
         }

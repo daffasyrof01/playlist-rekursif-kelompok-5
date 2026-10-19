@@ -5,13 +5,14 @@ import java.nio.charset.StandardCharsets;
 public class PlaylistRekursifTest {
     public static void main(String[] args) {
         int[] sizes = {0, 1, 2, 3, 4, 5, 6, 8, 10};
+        int[] seconds = {263, 215, 449, 211, 213, 210, 298, 266, 295, 242};
         int assertions = 0;
         for (int n : sizes) {
             double expectedTotal = 0;
             double expectedMax = 0;
             for (int i = 0; i < n; i++) {
-                expectedTotal += PlaylistRekursif.playlist[i].getDurasi();
-                expectedMax = Math.max(expectedMax, PlaylistRekursif.playlist[i].getDurasi());
+                expectedTotal += seconds[i] / 60.0;
+                expectedMax = Math.max(expectedMax, seconds[i] / 60.0);
             }
             check(Math.abs(PlaylistRekursif.totalDurasi(PlaylistRekursif.playlist, n) - expectedTotal) < 1e-9,
                     "Total salah untuk n=" + n);
@@ -35,14 +36,32 @@ public class PlaylistRekursifTest {
                 assertions++;
             }
             assertions += 3;
-            System.out.println("PASS n=" + n + " total=" + String.format(java.util.Locale.US, "%.2f", expectedTotal)
-                    + " max=" + String.format(java.util.Locale.US, "%.2f", expectedMax) + " reverse=" + lines.length);
+            System.out.println("PASS n=" + n + " total=" + PlaylistRekursif.formatDurasi(expectedTotal)
+                    + " max=" + PlaylistRekursif.formatDurasi(expectedMax) + " reverse=" + lines.length);
         }
         Lagu[] same = {new Lagu("A", "Artis", 2.5), new Lagu("B", "Artis", 2.5)};
-        check(PlaylistRekursif.cariDurasiTerpanjang(same, 2) == 2.5, "Durasi sama gagal");
+        check(Math.abs(PlaylistRekursif.cariDurasiTerpanjang(same, 2) - 170 / 60.0) < 1e-9, "Durasi sama gagal");
         check(PlaylistRekursif.totalDurasi(new Lagu[0], 0) == 0, "Playlist kosong gagal");
         check(PlaylistRekursif.cariDurasiTerpanjang(new Lagu[0], 0) == 0, "Maksimum kosong gagal");
-        System.out.println("ALL PASS: " + (assertions + 3) + " pemeriksaan; file asli tidak diubah.");
+        check(PlaylistRekursif.formatDurasi(PlaylistRekursif.totalDurasi(PlaylistRekursif.playlist, 10)).equals("44:22"),
+                "Total menit:detik gagal");
+        check(PlaylistRekursif.formatDurasi(PlaylistRekursif.cariDurasiTerpanjang(PlaylistRekursif.playlist, 10)).equals("7:29"),
+                "Durasi terpanjang gagal");
+        Lagu[] carry = {new Lagu("A", "Artis", 0.59), new Lagu("B", "Artis", 0.02)};
+        check(PlaylistRekursif.formatDurasi(PlaylistRekursif.totalDurasi(carry, 2)).equals("1:01"),
+                "Penjumlahan melewati 60 detik gagal");
+        check(PlaylistRekursif.formatDurasi(new Lagu("A", "Artis", 4.02).getDurasi()).equals("4:02"),
+                "Nol di depan detik gagal");
+        for (double invalid : new double[] {-1, Double.NaN, Double.POSITIVE_INFINITY, 1.60}) {
+            boolean rejected = false;
+            try {
+                new Lagu("Tidak valid", "Artis", invalid);
+            } catch (IllegalArgumentException expected) {
+                rejected = true;
+            }
+            check(rejected, "Durasi tidak valid diterima: " + invalid);
+        }
+        System.out.println("ALL PASS: " + (assertions + 11) + " pemeriksaan; file asli tidak diubah.");
     }
 
     private static void check(boolean condition, String message) {

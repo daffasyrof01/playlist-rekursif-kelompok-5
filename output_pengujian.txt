@@ -1,10 +1,10 @@
-PASS n=0 total=0.00 max=0.00 reverse=0
-PASS n=1 total=4.23 max=4.23 reverse=1
-PASS n=2 total=7.58 max=4.23 reverse=2
-PASS n=3 total=14.87 max=7.29 reverse=3
-PASS n=4 total=18.18 max=7.29 reverse=4
-PASS n=5 total=21.51 max=7.29 reverse=5
-PASS n=6 total=24.81 max=7.29 reverse=6
-PASS n=8 total=33.65 max=7.29 reverse=8
-PASS n=10 total=42.22 max=7.29 reverse=10
-ALL PASS: 69 pemeriksaan; file asli tidak diubah.
+PASS n=0 total=0:00 max=0:00 reverse=0
+PASS n=1 total=4:23 max=4:23 reverse=1
+PASS n=2 total=7:58 max=4:23 reverse=2
+PASS n=3 total=15:27 max=7:29 reverse=3
+PASS n=4 total=18:58 max=7:29 reverse=4
+PASS n=5 total=22:31 max=7:29 reverse=5
+PASS n=6 total=26:01 max=7:29 reverse=6
+PASS n=8 total=35:25 max=7:29 reverse=8
+PASS n=10 total=44:22 max=7:29 reverse=10
+ALL PASS: 77 pemeriksaan; file asli tidak diubah.
